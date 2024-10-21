@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela com Botões</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0; /* Cor de fundo da página */
-        }
-        .button-container {
-            display: flex;
-            gap: 10px; /* Espaço entre os botões */
-        }
-        a {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px; /* Margem em torno dos botões */
-            border: none; /* Remove a borda padrão */
-            border-radius: 5px; /* Bordas arredondadas */
-            background-color: #a50000; /* Cor de fundo padrão dos botões */
-            color: white; /* Cor do texto */
-            text-decoration: none; /* Remove o sublinhado do link */
-            display: inline-block; /* Para que o link se comporte como um botão */
-            cursor: pointer; /* Muda o cursor ao passar sobre o botão */
-            transition: background-color 0.3s; /* Transição suave para a cor */
-        }
-        a:hover {
-            background-color: #850000; /* Cor do botão ao passar o mouse */
-        }
-    </style>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #000000, #8b0000 );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Altura total da tela */
+      margin: 0;
+    }
+    .container {
+      width: 300px;
+      padding: 20px;
+      background-color:  #FFFFFF; /* Cor de fundo do quadrado */
+      border-radius: 10px; /* Bordas arredondadas */
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7); /* Sombra */
+      text-align: center;
+    }
+    .button {
+      background-color:#4682B4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s; /* Transição suave */
+    }
+    .button:hover {
+      background-color: #87CEEB;
+    }
+    input[type="text"], input[type="password"] {
+      width: 90%; /* Largura total do campo */
+      padding: 8px;
+      margin: 10px 0; /* Margem entre os campos */
+      border: 1px solid #ccc; /* Borda */
+      border-radius: 5px; /* Bordas arredondadas */
+    }
+    p {
+      margin-top: 15px; /* Margem acima do texto */
+    }
+    .logo {
+      width: 100%; /* Largura da imagem */
+      height: 100px; /* Altura da imagem */
+      margin-bottom: 20px; /* Margem abaixo da imagem */
+    }
+    
+  </style>
 </head>
 <body>
-    <div class="button-container">
-        <a href="">Notícias</a>
-        <a href="eventos.php">Eventos</a>
-        <a href="calendario.php">Calendário</a>
-        <a href="avisos.php">Avisos</a>
-    </div>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+      <input type="text" name="usuario" placeholder="Usuário" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button class="button" type="submit">Entrar</button>
+    </form>
+    <p>Não possui uma conta? <a href="cadastro.php">Cadastre-se</a></p>
+  </div>
 </body>
 </html>
