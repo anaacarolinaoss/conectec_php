@@ -59,6 +59,7 @@
       <button class="button" type="submit">Entrar</button>
     </form>
     <p>Não possui uma conta? <a href="cadastro.php">Cadastre-se</a></p>
+    <button class="button" onclick="window.location.href='calendario.php'">Ver Calendário</button>
   </div>
 </body>
 </html>
