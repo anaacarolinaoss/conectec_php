@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #000000, #8b0000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+      margin: 0;
+      position: relative; /* Para posicionar a imagem no corpo */
+
+      .header {
+      position: absolute; /* Para posicionar o cabeçalho */
+      top: 10px; /* Distância do topo */
+      left: 10px; /* Distância da esquerda */
+     
+      align-items: center; /* Centraliza verticalmente */
+    }
+    .header h1 {
+      margin-left: 10px; /* Espaço entre a imagem e o título */
+      font-size: 24px; /* Tamanho da fonte do título */
+      color: #FFFFFF; /* Cor do texto */
+    }
+    }
+    .container {
+      width: 300px;
+      padding: 20px;
+      background-color: #FFFFFF; 
+      border-radius: 10px; 
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7); 
+      text-align: center;
+    }
+    input[type="text"], input[type="password"], select {
+      width: 90%; 
+      padding: 8px;
+      margin: 10px 0; 
+      border: 1px solid #ccc; 
+      border-radius: 5px; 
+    }
+    .button {
+      background-color: #4682B4; /* Fundo azul */
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s; 
+    }
+    .button:hover {
+      background-color: #87CEEB; /* Cor ao passar o mouse */
+    }
+    .register-button {
+      margin-top: 10px;
+      display: block;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: transparent; /* Remove o fundo azul */
+      color: #000000; /* Cor do texto */
+      border: 1px solid #000000; /* Borda azul */
+      text-align: center; /* Centraliza o texto */
+      padding: 10px; /* Adiciona padding */
+      border-radius: 5px; /* Bordas arredondadas */
+    }
+    .register-button:hover {
+      background-color: #87CEEB; /* Cor ao passar o mouse */
+    }
+    p {
+      margin-top: 15px; 
+    }
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    .forgot-password a {
+      color: #4682B4;
+      text-decoration: none;
+    }
+    .forgot-password a:hover {
+      text-decoration: none;
+    }
+    .header-image {     
+      top: 10px; /* Distância do topo */
+      left: 10px; /* Distância da esquerda */
+      width: 200px; /* Largura da imagem */
+      height: auto; /* Altura automática para manter a proporção */
+    }
+
+
+.coluna1{
+    display: inline-block;
+    background: blue;
+}
+
+.coluna2{
+    width:400px;
+    height:200px;
+    background:red;
+
+    display:inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+ 
+ 
+ </style>
+</head>
+<body>
+<div class="header">
+        <div class="coluna1">    <img src="./imagens/conectec2.png" class="header-image"> </div>
+        <div class="coluna2"><h1  class="titulo">Conectec</h1></div>
+      </div>    
+    
+</div>    
+ 
+ 
+ 
+  <div class="container">
+    <h2>Login</h2>
+    <form action="" method="post">
+      <input type="text" name="usuario" placeholder="Email" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button class="button" type="submit">Entrar</button>
+    </form>
+    <p class="forgot-password">
+      <a href="recuperacao-senha.php">Esqueceu a senha? Clique aqui</a>
+    </p>
+    <a href="cadUsuario.php" class="register-button">Cadastre-se</a>
+  </div>
+
+</body>
+</html>

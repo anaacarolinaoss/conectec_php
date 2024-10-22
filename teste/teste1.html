@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+
+  
+  <style>
+        * {
+        box-sizing: border-box;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+        float: left;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+        }
+
+        .left {
+        width: 25%;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .right {
+        width: 75%;
+        text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+        .header-image{
+            width: 300px;
+        }
+
+        .titulo{
+            font-size: 100px;
+        }
+</style>
+ 
+ </style>
+</head>
+<body>
+
+
+    <div class="row">
+        <div class="column left" style="background-color:#aaa;">
+            <img src="./imagens/conectec2.png" class="header-image">
+        </div>
+        <div class="column right" style="background-color:#bbb;">
+            <h1  class="titulo">Conectec</h1>
+        </div>
+      </div>
+ 
+
+</body>
+</html>

@@ -3,29 +3,21 @@
 <head>
   <title>Login</title>
   <style>
-    body {
+    .detalhe {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #000000, #8b0000);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; 
+      height: 70vh; 
       margin: 0;
       position: relative; /* Para posicionar a imagem no corpo */
 
-      .header {
-      position: absolute; /* Para posicionar o cabeçalho */
-      top: 10px; /* Distância do topo */
-      left: 10px; /* Distância da esquerda */
-     
+      
       align-items: center; /* Centraliza verticalmente */
     }
-    .header h1 {
-      margin-left: 10px; /* Espaço entre a imagem e o título */
-      font-size: 24px; /* Tamanho da fonte do título */
-      color: #FFFFFF; /* Cor do texto */
-    }
-    }
+   
+    
     .container {
       width: 300px;
       padding: 20px;
@@ -83,36 +75,79 @@
     .forgot-password a:hover {
       text-decoration: none;
     }
-    .header-image {
-      position: absolute; /* Para posicionar a imagem */
-      top: 10px; /* Distância do topo */
-      left: 10px; /* Distância da esquerda */
-      width: 50px; /* Largura da imagem */
-      height: auto; /* Altura automática para manter a proporção */
-    }
-    .titulo{
-      left: 200px; /* Distância da esquerda */
-    }
+
+    * {
+        box-sizing: border-box;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+          float: left;
+          padding: 10px;
+          height: 300px; /* Should be removed. Only for demonstration */
+        }
+
+        .left {
+          width: 25%;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .right {
+          width: 75%;
+          text-align: center;
+          vertical-align: middle;
+          display: table-cell;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+        .header-image{
+            width: 300px;
+        }
+
+        .titulo{
+            font-size: 100px;
+            color: white;
+        }
   </style>
 </head>
 <body>
 <div class="header">
-      <img src="./imagens/conectec2.png" class="header-image"> 
-    <h1  class="titulo">Conectec</h1>
-  </div> 
-  <div class="container">
-    <h2>Login</h2>
-    <form action="" method="post">
-      <input type="text" name="usuario" placeholder="Email" required>
-      <input type="password" name="senha" placeholder="Senha" required>
-      <button class="button" type="submit">Entrar</button>
-    </form>
-    <p class="forgot-password">
-      <a href="recuperacao-senha.php">Esqueceu a senha? Clique aqui</a>
-    </p>
-    <a href="cadUsuario.php" class="register-button">Cadastre-se</a>
-  </div>
 
+    <div class="row" style=" background:linear-gradient(to right, #000000, #8b0000)">
+        <div class="column left" >
+            <img src="./imagens/conectec2.png" class="header-image">
+        </div>
+        <div class="column right" >
+            <h1  class="titulo">Conectec</h1>
+        </div>
+    </div>
+</div>    
+
+      <div class="detalhe">
+          <div class="container">
+        <h2>Login</h2>
+        <form action="" method="post">
+          <input type="text" name="usuario" placeholder="Email" required>
+          <input type="password" name="senha" placeholder="Senha" required>
+          <button class="button" type="submit">Entrar</button>
+        </form>
+        <p class="forgot-password">
+          <a href="recuperacao-senha.php">Esqueceu a senha? Clique aqui</a>
+        </p>
+        <a href="cadUsuario.php" class="register-button">Cadastre-se</a>
+      </div>
+
+
+      </div>
+ 
+  
   <?php
   // Conectar ao banco de dados
   $servername = "localhost";
