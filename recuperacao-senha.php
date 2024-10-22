@@ -6,11 +6,28 @@
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #000000, #8b0000);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
             margin: 0;
+            display: flex;
+            flex-direction: column; /* Alinha os elementos verticalmente */
+            align-items: center; /* Centraliza os elementos horizontalmente */
+            height: 100vh;
+            justify-content: center; /* Centraliza verticalmente o conteúdo */
+        }
+        .header {
+            display: flex;
+            align-items: center; /* Alinha a imagem e o texto */
+            justify-content: center; /* Centraliza horizontalmente */
+            margin-bottom: 20px; /* Espaço entre o cabeçalho e o conteúdo */
+        }
+        .header-image {
+            width: 150px; /* Tamanho da imagem */
+        }
+        .titulo {
+            font-size: 50px; 
+            color: white;
+            margin-left: 20px; 
+            font-family: Arial, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para destacar o texto */
         }
         .container {
             width: 300px;
@@ -45,13 +62,19 @@
     </style>
 </head>
 <body>
+
+    <div class="header">
+        <img src="./imagens/conectec2.png" class="header-image" alt="Logo Conectec">
+        <h1 class="titulo">Conectec</h1>
+    </div>    
+
     <div class="container">
         <h2>Recuperação de Senha</h2>
         <form action="" method="post">
             <input type="email" name="email" placeholder="Digite seu e-mail" required>
             <button class="button" type="submit">Enviar Instruções</button>
         </form>
-        <p><a href="index.php">Voltar ao Login</a></p> <!-- Caminho para a página de login -->
+        <p><a href="index.php">Voltar ao Login</a></p>
     </div>
 
     <?php

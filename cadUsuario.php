@@ -6,11 +6,23 @@
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #000000, #8b0000);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; 
       margin: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center; /* Alinha verticalmente a imagem e o texto */
+      justify-content: center; /* Centraliza horizontalmente */
+      margin-bottom: 20px; /* Espaço entre o cabeçalho e o container */
+      padding-top: 20px; /* Espaço acima do cabeçalho */
+    }
+    .header-image {
+      width: 150px; /* Tamanho da imagem */
+    }
+    .titulo {
+      font-size: 50px; 
+      color: white;
+      margin-left: 20px; 
+      font-family: Arial, sans-serif;
     }
     .container {
       width: 300px;
@@ -19,6 +31,7 @@
       border-radius: 10px; 
       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7); 
       text-align: center;
+      margin: 0 auto; /* Centraliza o container horizontalmente */
     }
     .button {
       background-color: #4682B4;
@@ -45,6 +58,10 @@
   </style>
 </head>
 <body>
+  <div class="header">
+    <img src="./imagens/conectec2.png" class="header-image" alt="Logo Conectec">
+    <h1 class="titulo">Conectec</h1>
+  </div>    
   <div class="container">
     <h2>Cadastro</h2>
     <form action="" method="post">
@@ -62,9 +79,8 @@
     <p>Já possui uma conta? <a href="index.php">Faça login</a></p>
   </div>
 
-
   <?php
-  // Conectar ao banco de dados
+  // Código PHP para conexão e manipulação do banco de dados
   $servername = "localhost";
   $username = "root";
   $password = "";
