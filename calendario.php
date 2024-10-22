@@ -2,11 +2,11 @@
   <div class="container">
     <div class="logo">
       <h1>Conectec</h1>
-      <style>
-        header {
-  background-color: #8b0000; 
-  padding: 20px 0;
+      <style> 
+      header {
+  background-color: #800000; 
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 
@@ -25,6 +25,7 @@
 }
 
 .menu {
+  font-family: 'Verdana', sans-serif;
   list-style: none;
   margin: 0; 
   padding: 0; 
@@ -36,7 +37,7 @@
 .menu li {
   flex: 1; 
   margin: 0; 
-  background-color: #8b0000; 
+  background-color: #800000; 
   padding: 15px; 
   border: 2px solid #fff; 
   border-radius: 0px; 
@@ -44,7 +45,7 @@
 }
 
 .menu li:hover {
-  background-color: rgba(255, 255, 255, 0.2); 
+  background-color: rgba(280, 78, 0, 0.4); 
 }
 
 .menu a {
@@ -79,15 +80,25 @@
   }
 }
 
+.texto-centralizado {
+          display: flex; /* Usando Flexbox */
+          justify-content: center; /* Centraliza horizontalmente */
+          align-items: center; /* Centraliza verticalmente */
+          height: calc(10vh - 150px); /* Altura total da tela menos altura do header e menu */
+          text-align: center; /* Centraliza o texto */
+          font-size: 20px; /* Tamanho da fonte */
+          color: #000; /* Cor do texto */
+        }
+
+        .subtitulo {
+          font-size: 15px; /* Tamanho do subtítulo */
+          color: #000; /* Cor do subtítulo */
+          margin-top: 10px; /* Espaço acima do subtítulo */
+        }
+
 </style>
     </div>
     <nav>
-      <button class="menu-button">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
     </nav>
   </div>
 </header>
@@ -97,4 +108,5 @@
         <li><a href="#">Calendário</a></li>
         <li><a href="#">Avisos</a></li>
       </ul>
-    
+     <p class="texto-centralizado">Bem-vindo ao Calendário!</p>
+     <h2 class="subtitulo">Aqui você encontrará as datas e poderá marcar suas informações.</h2>

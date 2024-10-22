@@ -1,33 +1,97 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela com Botões</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            margin: 0;
-        }
-        .button-container {
-            display: flex;
-            gap: 10px; /* Espaço entre os botões */
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-    <div class="button-container">
-        <button onclick="alert('Botão 1 clicado')">Botão 1</button>
-        <button onclick="alert('Botão 2 clicado')">Botão 2</button>
-        <button onclick="alert('Botão 3 clicado')">Botão 3</button>
-        <button onclick="alert('Botão 4 clicado')">Botão 4</button>
+<header>
+  <div class="container">
+    <div class="logo">
+      <h1>Conectec</h1>
+      <style>
+        header {
+  background-color: #800000; 
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu {
+  font-family: 'Verdana', sans-serif;
+  list-style: none;
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  justify-content: space-around; 
+  width: 100%; 
+}
+
+.menu li {
+  flex: 1; 
+  margin: 0; 
+  background-color: #8b0000; 
+  padding: 15px; 
+  border: 2px solid #fff; 
+  border-radius: 0px; 
+  transition: background-color 0.3s;
+}
+
+.menu li:hover {
+  background-color: rgba(280, 78, 0, 0.4); 
+}
+
+.menu a {
+  color: #fff; 
+  text-decoration: none;
+  display: block; 
+  text-align: center; 
+}
+
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ff0000;
+    padding: 20px;
+    width: 100%;
+  }
+  .menu li {
+    margin-bottom: 10px;
+  }
+  .menu a {
+    display: block;
+  }
+  .menu-button:hover + .menu {
+    display: block;
+  }
+}
+
+</style>
     </div>
-</body>
-</html>
+    <nav>
+
+
+    </nav>
+  </div>
+</header>
+<ul class="menu">
+        <li><a href="#">Notícias</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Calendário</a></li>
+        <li><a href="#">Avisos</a></li>
+      </ul>
+    
