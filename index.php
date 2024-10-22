@@ -12,6 +12,19 @@
       height: 100vh; 
       margin: 0;
       position: relative; /* Para posicionar a imagem no corpo */
+
+      .header {
+      position: absolute; /* Para posicionar o cabeçalho */
+      top: 10px; /* Distância do topo */
+      left: 10px; /* Distância da esquerda */
+      display: flex; /* Para alinhar a imagem e o título */
+      align-items: center; /* Centraliza verticalmente */
+    }
+    .header h1 {
+      margin-left: 10px; /* Espaço entre a imagem e o título */
+      font-size: 24px; /* Tamanho da fonte do título */
+      color: #FFFFFF; /* Cor do texto */
+    }
     }
     .container {
       width: 300px;
@@ -80,7 +93,10 @@
   </style>
 </head>
 <body>
-  <img src="imagens/conectec2.png" class="header-image"> 
+<div class="header">
+    <img src="imagens/conectec2.png" class="header-image"> 
+    <h1>conectec</h1>
+  </div> 
   <div class="container">
     <h2>Login</h2>
     <form action="" method="post">
