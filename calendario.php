@@ -1,14 +1,26 @@
 <header>
   <div class="container">
     <div class="logo">
+    <img src="imagens/conectec2.png" alt="Imagem no cabeçalho" class="imagem-cabecalho">
       <h1>Conectec</h1>
-      <style> 
+          <style> 
       header {
   background-color: #800000; 
   text-align: center;
   font-family: Arial, sans-serif;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imagem-cabecalho {
+    margin: 10px; /* Margem ao redor da imagem */
+    max-width: 135px; /* Tamanho máximo da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
 
 .container {
   max-width: 1200px;
@@ -22,6 +34,8 @@
   font-size: 24px;
   font-weight: bold;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .menu {
@@ -97,7 +111,8 @@
         }
 
 </style>
-    </div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    </script>
     <nav>
     </nav>
   </div>
@@ -110,3 +125,4 @@
       </ul>
      <p class="texto-centralizado">Bem-vindo ao Calendário!</p>
      <h2 class="subtitulo">Aqui você encontrará as datas e poderá marcar suas informações.</h2>
+     
