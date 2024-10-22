@@ -48,7 +48,6 @@
   <div class="container">
     <h2>Cadastro</h2>
     <form action="" method="post">
-      
       <select name="tipo_cadastro" required>
         <option value="" disabled selected>Selecione o tipo de cadastro</option>
         <option value="adm">Administrador</option>
@@ -57,10 +56,12 @@
       <input type="text" name="nome" placeholder="Nome" required>
       <input type="text" name="usuario" placeholder="Usuário" required>
       <input type="password" name="senha" placeholder="Senha" required>
+      <input type="password" name="senha_confirmacao" placeholder="Confirme a Senha" required>
       <button class="button" type="submit">Cadastrar</button>
     </form>
     <p>Já possui uma conta? <a href="index.php">Faça login</a></p>
   </div>
+
 
   <?php
   // Conectar ao banco de dados
@@ -79,30 +80,46 @@
 
   // Verificar se o formulário foi enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'];
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
-    $tipo_cadastro = $_POST['tipo_cadastro'];
 
-    // Hash da senha
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-
-    // Inserir dados no banco de dados
-    if ($tipo_cadastro == 'adm') {
-      $sql = "INSERT INTO administradores (nome, usuario, senha) VALUES (?, ?, ?)";
-    } else {
-      $sql = "INSERT INTO usuarios_comuns (nome, usuario, senha) VALUES (?, ?, ?)";
-    }
-
+    // Verificar se o usuário é um administrador
+    $sql = "SELECT senha FROM administradores WHERE usuario = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nome, $usuario, $senha_hash);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($stmt->execute()) {
-      echo "Cadastro realizado com sucesso!";
+    if ($stmt->num_rows > 0) {
+      $stmt->bind_result($senha_hash);
+      $stmt->fetch();
+      if (password_verify($senha, $senha_hash)) {
+        echo "Login como administrador bem-sucedido!";
+        // Redirecionar ou iniciar sessão
+      } else {
+        echo "Senha incorreta para administrador.";
+      }
     } else {
-      echo "Erro ao cadastrar: " . $conn->error;
-    }
+      // Verificar se o usuário é um usuário comum
+      $sql = "SELECT senha FROM usuarios_comuns WHERE usuario = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $usuario);
+      $stmt->execute();
+      $stmt->store_result();
 
+      if ($stmt->num_rows > 0) {
+        $stmt->bind_result($senha_hash);
+        $stmt->fetch();
+        if (password_verify($senha, $senha_hash)) {
+          echo "Login como usuário comum bem-sucedido!";
+          // Redirecionar ou iniciar sessão
+        } else {
+          echo "Senha incorreta para usuário comum.";
+        }
+      } else {
+        echo "Usuário não encontrado.";
+      }
+    }
     $stmt->close();
   }
 

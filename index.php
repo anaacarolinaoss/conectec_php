@@ -17,7 +17,7 @@
       position: absolute; /* Para posicionar o cabeçalho */
       top: 10px; /* Distância do topo */
       left: 10px; /* Distância da esquerda */
-      display: flex; /* Para alinhar a imagem e o título */
+     
       align-items: center; /* Centraliza verticalmente */
     }
     .header h1 {
@@ -60,8 +60,8 @@
       margin-left: auto;
       margin-right: auto;
       background-color: transparent; /* Remove o fundo azul */
-      color: #4682B4; /* Cor do texto */
-      border: 1px solid #4682B4; /* Borda azul */
+      color: #000000; /* Cor do texto */
+      border: 1px solid #000000; /* Borda azul */
       text-align: center; /* Centraliza o texto */
       padding: 10px; /* Adiciona padding */
       border-radius: 5px; /* Bordas arredondadas */
@@ -81,7 +81,7 @@
       text-decoration: none;
     }
     .forgot-password a:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
     .header-image {
       position: absolute; /* Para posicionar a imagem */
@@ -90,12 +90,15 @@
       width: 50px; /* Largura da imagem */
       height: auto; /* Altura automática para manter a proporção */
     }
+    .titulo{
+      left: 200px; /* Distância da esquerda */
+    }
   </style>
 </head>
 <body>
 <div class="header">
-    <img src="imagens/conectec2.png" class="header-image"> 
-    <h1>conectec</h1>
+      <img src="./imagens/conectec2.png" class="header-image"> 
+    <h1  class="titulo">Conectec</h1>
   </div> 
   <div class="container">
     <h2>Login</h2>
