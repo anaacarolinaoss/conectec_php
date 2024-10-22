@@ -59,7 +59,7 @@
       <input type="password" name="senha" placeholder="Senha" required>
       <button class="button" type="submit">Cadastrar</button>
     </form>
-    <p>Já possui uma conta? <a href="login.php">Faça login</a></p>
+    <p>Já possui uma conta? <a href="index.php">Faça login</a></p>
   </div>
 
   <?php

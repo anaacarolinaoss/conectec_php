@@ -11,6 +11,7 @@
       align-items: center;
       height: 100vh; 
       margin: 0;
+      position: relative; /* Para posicionar a imagem no corpo */
     }
     .container {
       width: 300px;
@@ -20,8 +21,15 @@
       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7); 
       text-align: center;
     }
+    input[type="text"], input[type="password"], select {
+      width: 90%; 
+      padding: 8px;
+      margin: 10px 0; 
+      border: 1px solid #ccc; 
+      border-radius: 5px; 
+    }
     .button {
-      background-color: #4682B4;
+      background-color: #4682B4; /* Fundo azul */
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -30,29 +38,60 @@
       transition: background-color 0.3s; 
     }
     .button:hover {
-      background-color: #87CEEB;
+      background-color: #87CEEB; /* Cor ao passar o mouse */
     }
-    input[type="text"], input[type="password"], select {
-      width: 90%; 
-      padding: 8px;
-      margin: 10px 0; 
-      border: 1px solid #ccc; 
-      border-radius: 5px; 
+    .register-button {
+      margin-top: 10px;
+      display: block;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: transparent; /* Remove o fundo azul */
+      color: #4682B4; /* Cor do texto */
+      border: 1px solid #4682B4; /* Borda azul */
+      text-align: center; /* Centraliza o texto */
+      padding: 10px; /* Adiciona padding */
+      border-radius: 5px; /* Bordas arredondadas */
+    }
+    .register-button:hover {
+      background-color: #87CEEB; /* Cor ao passar o mouse */
     }
     p {
       margin-top: 15px; 
     }
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    .forgot-password a {
+      color: #4682B4;
+      text-decoration: none;
+    }
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+    .header-image {
+      position: absolute; /* Para posicionar a imagem */
+      top: 10px; /* Distância do topo */
+      left: 10px; /* Distância da esquerda */
+      width: 50px; /* Largura da imagem */
+      height: auto; /* Altura automática para manter a proporção */
+    }
   </style>
 </head>
 <body>
+  <img src="imagens/conectec2.png" class="header-image"> 
   <div class="container">
     <h2>Login</h2>
     <form action="" method="post">
-      <input type="text" name="usuario" placeholder="Usuário" required>
+      <input type="text" name="usuario" placeholder="Email" required>
       <input type="password" name="senha" placeholder="Senha" required>
       <button class="button" type="submit">Entrar</button>
     </form>
-    <p>Não possui uma conta? <a href="cadUsuario.php">Cadastre-se</a></p> <!-- Caminho para a página de cadastro -->
+    <p class="forgot-password">
+      <a href="recuperacao-senha.php">Esqueceu a senha? Clique aqui</a>
+    </p>
+    <a href="cadUsuario.php" class="register-button">Cadastre-se</a>
   </div>
 
   <?php
