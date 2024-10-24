@@ -3,44 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela com Botões</title>
-    <style>
-        body {
+    <title>Conectec</title>
+    <style> 
+        header {
+            background-color: #800000; 
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .imagem-cabecalho {
+            margin: 10px; /* Margem ao redor da imagem */
+            max-width: 135px; /* Tamanho máximo da imagem */
+            height: auto; /* Mantém a proporção da imagem */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu {
+            font-family: 'Verdana', sans-serif;
+            list-style: none;
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: space-around; 
+            width: 100%; 
+        }
+
+        .menu li {
+            flex: 1; 
+            margin: 0; 
+            background-color: #800000; 
+            padding: 15px; 
+            border: 2px solid #fff; 
+            border-radius: 0px; 
+            transition: background-color 0.3s;
+        }
+
+        .menu li:hover {
+            background-color: rgba(280, 78, 0, 0.4); 
+        }
+
+        .menu a {
+            color: #fff; 
+            text-decoration: none;
+            display: block; 
+            text-align: center; 
+        }
+
+        @media (max-width: 768px) {
+            .menu-button {
+                display: block;
+            }
+            .menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #ff0000;
+                padding: 20px;
+                width: 100%;
+            }
+            .menu li {
+                margin-bottom: 10px;
+            }
+            .menu a {
+                display: block;
+            }
+            .menu-button:hover + .menu {
+                display: block;
+            }
+        }
+
+        .texto-centralizado {
+            display: flex; /* Usando Flexbox */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: calc(10vh - 150px); /* Altura total da tela menos altura do header e menu */
+            text-align: center; /* Centraliza o texto */
+            font-size: 20px; /* Tamanho da fonte */
+            color: #000; /* Cor do texto */
+        }
+
+        .subtitulo {
+            font-size: 15px; /* Tamanho do subtítulo */
+            color: #000; /* Cor do subtítulo */
+            margin-top: 10px; /* Espaço acima do subtítulo */
+        }
+
+        /* Sidebar adicional */
+        .info-sidebar {
+            position: fixed;
+            top: 0;
+            right: -1000px; /* Mantém a sidebar fora da tela */
+            width: 250px;
+            height: 100%;
+            background-color: #800000;
+            color: black;
+            display: flex;
+            flex-direction: column;
             align-items: flex-start;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0; /* Cor de fundo da página */
+            padding: 20px;
+            transition: right 0.3s;
+            z-index: 1000;
         }
-        .button-container {
-            display: flex;
-            gap: 10px; /* Espaço entre os botões */
+
+        .info-sidebar.open {
+            right: 0; /* Move para dentro da tela */
         }
-        a {
-            padding: 10px 20px;
+
+        .back-button {
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .info-button {
+            background-color: #8000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
             font-size: 16px;
-            margin: 10px; /* Margem em torno dos botões */
-            border: none; /* Remove a borda padrão */
-            border-radius: 5px; /* Bordas arredondadas */
-            background-color: #a50000; /* Cor de fundo padrão dos botões */
-            color: white; /* Cor do texto */
-            text-decoration: none; /* Remove o sublinhado do link */
-            display: inline-block; /* Para que o link se comporte como um botão */
-            cursor: pointer; /* Muda o cursor ao passar sobre o botão */
-            transition: background-color 0.3s; /* Transição suave para a cor */
+            margin-left: 20px;
         }
-        a:hover {
-            background-color: #850000; /* Cor do botão ao passar o mouse */
+
+        .info-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .info-sidebar p {
+            font-family: 'Courier New', Courier, monospace; /* Exemplo de nova fonte */
+            font-size: 16px; /* Tamanho da fonte */
+            color: white; /* Cor do texto */
+            margin: 0; /* Remove margens padrão */
         }
     </style>
 </head>
 <body>
-    <div class="button-container">
-        <a href="">Notícias</a>
-        <a href="eventos.php">Eventos</a>
-        <a href="calendario.php">Calendário</a>
-        <a href="avisos.php">Avisos</a>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="imagens/conectec2.png" alt="Imagem no cabeçalho" class="imagem-cabecalho">
+                <h1>Conectec</h1>
+            </div>
+            <nav>
+            
+            </nav>
+            <button class="info-button" onclick="toggleInfoSidebar()">&#9776;</button> 
+        </div>
+    </header>
+    
+    <div class="info-sidebar" id="infoSidebar">
+    <span class="back-button" onclick="toggleInfoSidebar()">&#8592;</span>
+        <p>Informações Adicionais</p>
+        
+        <!-- Adicione mais conteúdo aqui, se necessário -->
     </div>
+    <script>
+        function toggleInfoSidebar() {
+            const infoSidebar = document.getElementById('infoSidebar');
+            infoSidebar.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
+<ul class="menu">
+                    <li><a href="noticias.php">Notícias</a></li>
+                    <li><a href="eventos.php">Eventos</a></li>
+                    <li><a href="calendario.php">Calendário</a></li>
+                    <li><a href="avisos.php">Avisos</a></li>
+                </ul>
+            </nav>
