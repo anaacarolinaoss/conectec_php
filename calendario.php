@@ -191,6 +191,6 @@
                 </ul>
             </nav>
             <p class="texto-centralizado">Bem-vindo ao Calendário!</p>
-            <h2 class="subtitulo">Aqui você encontrará as datas e poderá marcar suas informações.</h2>
+            <h2 class="subtitulo">Aqui você encontrará as datas e poderá marcar suas informações no calendario.</h2>
 
             
