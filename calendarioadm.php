@@ -170,11 +170,12 @@
     </header>
     
     <div class="info-sidebar" id="infoSidebar">
-    <span class="back-button" onclick="toggleInfoSidebar()">&#8592;</span>
-        <p>Informações Adicionais</p>
-        
-        <!-- Adicione mais conteúdo aqui, se necessário -->
+        <span class="back-button" onclick="toggleInfoSidebar()">&#8592;</span>
+        <a href="sobre.php" class="info-button">Sobre</a>
+        <a href="privacidade.php" class="info-button">Política de Privacidade</a>
+        <a href="ajuda.php" class="info-button">Ajuda</a>
     </div>
+
     <script>
         function toggleInfoSidebar() {
             const infoSidebar = document.getElementById('infoSidebar');
