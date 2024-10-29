@@ -175,21 +175,3 @@
         <a href="privacidade.php" class="info-button">Política de Privacidade</a>
         <a href="ajuda.php" class="info-button">Ajuda</a>
     </div>
-
-    <script>
-        function toggleInfoSidebar() {
-            const infoSidebar = document.getElementById('infoSidebar');
-            infoSidebar.classList.toggle('open');
-        }
-    </script>
-</body>
-</html>
-<ul class="menu">
-                    <li><a href="noticias.php">Notícias</a></li>
-                    <li><a href="eventos.php">Eventos</a></li>
-                    <li><a href="calendario.php">Calendário</a></li>
-                    <li><a href="avisos.php">Avisos</a></li>
-                </ul>
-            </nav>
-            <p class="texto-centralizado">Bem-vindo ao Calendário!</p>
-            <h2 class="subtitulo">Aqui você encontrará as datas e  informações no calendario.</h2>
