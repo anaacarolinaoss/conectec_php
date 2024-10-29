@@ -127,8 +127,8 @@
         $stmt->bind_result($senha_hash);
         $stmt->fetch();
         if (password_verify($senha, $senha_hash)) {
-          echo "Login como usuário comum bem-sucedido!";
-          // Redirecionar ou iniciar sessão
+          header("Location: noticias.php");
+          exit();
         } else {
           echo "Senha incorreta para usuário comum.";
         }

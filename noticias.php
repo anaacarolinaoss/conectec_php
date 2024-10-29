@@ -20,9 +20,9 @@
         }
 
         .imagem-cabecalho {
-            margin: 10px; /* Margem ao redor da imagem */
-            max-width: 135px; /* Tamanho máximo da imagem */
-            height: auto; /* Mantém a proporção da imagem */
+            margin: 10px; 
+            max-width: 135px; 
+            height: auto; 
         }
 
         .logo {
@@ -89,26 +89,25 @@
         }
 
         .texto-centralizado {
-            display: flex; /* Usando Flexbox */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            height: calc(10vh - 150px); /* Altura total da tela menos altura do header e menu */
-            text-align: center; /* Centraliza o texto */
-            font-size: 20px; /* Tamanho da fonte */
-            color: #000; /* Cor do texto */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: calc(90vh - 150px); 
+            text-align: center; 
+            font-size: 20px; 
+            color: #000; 
         }
 
         .subtitulo {
-            font-size: 15px; /* Tamanho do subtítulo */
-            color: #000; /* Cor do subtítulo */
-            margin-top: 10px; /* Espaço acima do subtítulo */
+            font-size: 15px; 
+            color: #000; 
+            margin-top: 10px; 
         }
 
-        /* Sidebar adicional */
         .info-sidebar {
             position: fixed;
             top: 0;
-            right: -1000px; /* Mantém a sidebar fora da tela */
+            right: -1000px; 
             width: 250px;
             height: 100%;
             background-color: #800000;
@@ -122,7 +121,7 @@
         }
 
         .info-sidebar.open {
-            right: 0; /* Move para dentro da tela */
+            right: 0; 
         }
 
         .back-button {
@@ -133,7 +132,7 @@
         }
 
         .info-button {
-            background-color: #8000;
+            background-color: #800000;
             color: #fff;
             border: none;
             padding: 10px 15px;
@@ -141,17 +140,13 @@
             cursor: pointer;
             transition: background-color 0.3s;
             font-size: 16px;
-            margin-left: 20px;
+            font-family: Arial, sans-serif; /* Fonte dos botões */
+            margin-left: 20px; /* Margem entre os botões */
+            
         }
 
         .info-button:hover {
             background-color: rgba(255, 255, 255, 0.8);
-        }
-        .info-sidebar p {
-            font-family: 'Courier New', Courier, monospace; /* Exemplo de nova fonte */
-            font-size: 16px; /* Tamanho da fonte */
-            color: white; /* Cor do texto */
-            margin: 0; /* Remove margens padrão */
         }
     </style>
 </head>
@@ -163,18 +158,19 @@
                 <h1>Conectec</h1>
             </div>
             <nav>
-            
+                
             </nav>
             <button class="info-button" onclick="toggleInfoSidebar()">&#9776;</button> 
         </div>
     </header>
     
     <div class="info-sidebar" id="infoSidebar">
-    <span class="back-button" onclick="toggleInfoSidebar()">&#8592;</span>
-        <p>Informações Adicionais</p>
-        
-        <!-- Adicione mais conteúdo aqui, se necessário -->
+        <span class="back-button" onclick="toggleInfoSidebar()">&#8592;</span>
+        <a href="sobre.php" class="info-button">Sobre</a>
+        <a href="privacidade.php" class="info-button">Política de Privacidade</a>
+        <a href="ajuda.php" class="info-button">Ajuda</a>
     </div>
+
     <script>
         function toggleInfoSidebar() {
             const infoSidebar = document.getElementById('infoSidebar');
@@ -189,4 +185,3 @@
                     <li><a href="calendario.php">Calendário</a></li>
                     <li><a href="avisos.php">Avisos</a></li>
                 </ul>
-            </nav>

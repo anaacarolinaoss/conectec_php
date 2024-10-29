@@ -9,18 +9,18 @@
             background: linear-gradient(to right, #000000, #8b0000);
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centraliza o conteúdo horizontalmente */
-            justify-content: center; /* Centraliza verticalmente */
+            align-items: center; 
+            justify-content: center; 
             height: 100vh;
         }
         .header {
             display: flex;
-            align-items: center; /* Alinha verticalmente a imagem e o texto */
-            justify-content: center; /* Centraliza horizontalmente */
-            margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px; 
         }
         .header-image {
-            width: 150px; /* Tamanho da imagem */
+            width: 150px; 
         }
         .titulo {
             font-size: 50px; 
@@ -134,8 +134,8 @@
             $stmt->bind_result($senha_hash);
             $stmt->fetch();
             if (password_verify($senha, $senha_hash)) {
-                echo "Login como administrador bem-sucedido!";
-                // Redirecionar ou iniciar sessão
+                header("Location: telaInical.php"); // Corrigido para telaInical.php
+                exit();
             } else {
                 echo "Senha incorreta para administrador.";
             }
@@ -151,8 +151,8 @@
                 $stmt->bind_result($senha_hash);
                 $stmt->fetch();
                 if (password_verify($senha, $senha_hash)) {
-                    echo "Login como usuário comum bem-sucedido!";
-                    // Redirecionar ou iniciar sessão
+                    header("Location: noticias.php"); // Corrigido para telaInical.php
+                    exit();
                 } else {
                     echo "Senha incorreta para usuário comum.";
                 }
