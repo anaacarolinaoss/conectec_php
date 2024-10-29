@@ -190,7 +190,7 @@
                     <li><a href="avisos.php">Avisos</a></li>
                 </ul>
             </nav>
-            <p class="texto-centralizado">Bem-vindo aos avisos!</p>
+            <p class="texto-centralizado">Avisos!</p>
             <h2 class="subtitulo">Aqui você encontrará as informações de maneira mais facil.</h2>
 <!DOCTYPE html>
 <html lang="pt-BR">
