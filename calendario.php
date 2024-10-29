@@ -191,6 +191,328 @@
                 </ul>
             </nav>
             <p class="texto-centralizado">Bem-vindo ao Calendário!</p>
-            <h2 class="subtitulo">Aqui você encontrará as datas e poderá marcar suas informações no calendario.</h2>
+            <h2 class="subtitulo">Aqui você encontrará as datas e  informações no calendario.</h2>
 
-            
+            <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário Dinâmico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            border: 2px solid red; /* Borda vermelha */
+            padding: 10px; /* Espaço interno */
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+        .calendar div {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calendar-header {
+            grid-column: span 7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal, .edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content, .edit-modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calendário Dinâmico</h2>
+    <div class="calendar" id="calendar"></div>
+
+    <!-- Modal para adicionar informação -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3>Adicionar Informação</h3>
+            <input type="text" id="infoInput" placeholder="Digite sua informação">
+            <button onclick="addInfo()">Adicionar</button>
+            <button onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Modal para editar informação -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-content">
+            <h3>Editar Informação</h3>
+            <textarea id="editInput" rows="4" placeholder="Edite sua informação"></textarea>
+            <button onclick="saveEdit()">Salvar</button>
+            <button onclick="closeEditModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        const calendarElement = document.getElementById('calendar');
+        const modal = document.getElementById('modal');
+        const editModal = document.getElementById('editModal');
+        const infoInput = document.getElementById('infoInput');
+        const editInput = document.getElementById('editInput');
+        let currentDate = new Date();
+        let selectedDate = null;
+        let editDate = null;
+
+        function renderCalendar(date) {
+            calendarElement.innerHTML = '';
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            // Definindo os dias da semana
+            const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const calendarHeader = document.createElement('div');
+            calendarHeader.className = 'calendar-header';
+
+            // Botões de navegação
+            const prevButton = document.createElement('button');
+            prevButton.innerText = '←';
+            prevButton.onclick = () => {
+                date.setMonth(month - 1);
+                renderCalendar(date);
+            };
+
+            const nextButton = document.createElement('button');
+            nextButton.innerText = '→';
+            nextButton.onclick = () => {
+                date.setMonth(month + 1);
+                renderCalendar(date);
+            };
+
+            calendarHeader.appendChild(prevButton);
+            calendarHeader.appendChild(document.createTextNode(`${month + 1}/${year}`));
+            calendarHeader.appendChild(nextButton);
+            calendarElement.appendChild(calendarHeader);
+
+            // Adicionando os dias da semana
+            days.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.innerText = day;
+                calendarElement.appendChild(dayElement);
+            });
+
+            // Adicionando os dias do mês
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+                calendarElement.appendChild(document.createElement('div'));
+            }
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.innerText = i;
+                dayElement.onclick = () => openModal(year, month, i);
+                
+                // Recuperar informações armazenadas
+                const info = getInfo(year, month, i);
+                if (info) {
+                    dayElement.innerText += `\n${info}`;
+                }
+
+                // Clique para editar a informação
+                dayElement.ondblclick = () => openEditModal(year, month, i);
+                calendarElement.appendChild(dayElement);
+            }
+        }
+
+        function openModal(year, month, day) {
+            selectedDate = new Date(year, month, day);
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            infoInput.value = '';
+        }
+
+        function addInfo() {
+            const info = infoInput.value;
+            if (info) {
+                const year = selectedDate.getFullYear();
+                const month = selectedDate.getMonth();
+                const day = selectedDate.getDate();
+                
+                // Salvar informação no localStorage
+                saveInfo(year, month, day, info);
+
+                // Atualiza o calendário
+                renderCalendar(new Date(year, month));
+                closeModal();
+            }
+        }
+
+        function openEditModal(year, month, day) {
+            editDate = new Date(year, month, day);
+            const existingInfo = getInfo(year, month, day);
+            editInput.value = existingInfo || '';
+            editModal.style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            editModal.style.display = 'none';
+            editInput.value = '';
+        }
+
+        function saveEdit() {
+            const year = editDate.getFullYear();
+            const month = editDate.getMonth();
+            const day = editDate.getDate();
+            const updatedInfo = editInput.value;
+
+            // Atualiza a informação no localStorage
+            saveInfo(year, month, day, updatedInfo);
+
+            // Atualiza o calendário
+            renderCalendar(new Date(year, month));
+            closeEditModal();
+        }
+
+        function saveInfo(year, month, day, info) {
+            const key = `${year}-${month + 1}-${day}`;
+            localStorage.setItem(key, info);
+        }
+
+        function getInfo(year, month, day) {
+            const key = `${year}-${month + 1}-${day}`;
+            return localStorage.getItem(key);
+        }
+
+        renderCalendar(currentDate);
+    </script>
+</body>
+</html>
+  
+<?php
+require 'db.php';
+
+// Adicionar nova informação
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = $_POST['data'];
+    $info = $_POST['info'];
+
+    $stmt = $pdo->prepare("INSERT INTO informacoes_calendario (data, info) VALUES (?, ?)");
+    $stmt->execute([$data, $info]);
+
+    echo json_encode(['status' => 'success']);
+    exit;
+}
+
+// Recuperar informações do calendário
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $stmt = $pdo->query("SELECT * FROM informacoes_calendario");
+    $informacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($informacoes);
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário Dinâmico</title>
+    <style>
+        /* Estilos conforme o anterior */
+    </style>
+</head>
+<body>
+
+    <h2>Calendário Dinâmico</h2>
+    <div class="calendar" id="calendar"></div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3>Adicionar Informação</h3>
+            <input type="date" id="dataInput">
+            <input type="text" id="infoInput" placeholder="Digite sua informação">
+            <button onclick="addInfo()">Adicionar</button>
+            <button onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        const calendarElement = document.getElementById('calendar');
+        const modal = document.getElementById('modal');
+        const infoInput = document.getElementById('infoInput');
+        const dataInput = document.getElementById('dataInput');
+
+        function renderCalendar() {
+            // Renderiza o calendário, implementando lógica conforme o necessário
+            // ...
+        }
+
+        function openModal() {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            infoInput.value = '';
+        }
+
+        async function addInfo() {
+            const data = dataInput.value;
+            const info = infoInput.value;
+
+            if (data && info) {
+                const response = await fetch('calendario.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        data: data,
+                        info: info
+                    })
+                });
+
+                const result = await response.json();
+                if (result.status === 'success') {
+                    renderCalendar(); // Atualiza o calendário após adicionar
+                }
+                closeModal();
+            }
+        }
+
+        async function fetchInfo() {
+            const response = await fetch('calendario.php');
+            const informacoes = await response.json();
+            // Aqui você pode renderizar as informações no calendário
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchInfo();
+            renderCalendar(); // Renderiza o calendário inicialmente
+        });
+    </script>
+</body>
+</html>
