@@ -182,7 +182,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="imagens/conectec2.png" alt="Imagem no cabeçalho" class="imagem-cabecalho">
+                <img src="imagens/conectec2.png"  class="imagem-cabecalho">
                 <h1>Conectec</h1>
             </div>
             <nav>
