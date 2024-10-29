@@ -200,8 +200,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário Dinâmico</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff; /* Cor de fundo branco */
             text-align: center;
             margin: 20px;
         }
@@ -210,24 +211,26 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
             margin-top: 20px;
-            border: 2px solid red; /* Borda vermelha */
-            padding: 10px; /* Espaço interno */
-            border-radius: 5px; /* Bordas arredondadas */
+            border: 2px solid #800000; /* Borda vermelha suave */
+            padding: 10px;
+            border-radius: 8px; /* Bordas arredondadas */
+            background-color: #fff; /* Fundo branco para o calendário */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
         }
         .calendar div {
             padding: 20px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #; /* Cor de fundo suave para os dias */
+            border: 1px solid #ff9999; /* Borda vermelha suave */
             text-align: center;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .calendar-header {
-            grid-column: span 7;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .calendar div:hover {
+            background-color: #ffcccc; /* Cor de fundo ao passar o mouse */
         }
+
         .modal, .edit-modal {
             display: none;
             position: fixed;
@@ -242,14 +245,36 @@
         .modal-content, .edit-modal-content {
             background: white;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
+        button {
+            background-color: #800000; /* Botão em vermelho suave */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="text"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .calendar-header {
+            grid-column: span 7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
     </style>
 </head>
 <body>
-
-    <h2>Calendário Dinâmico</h2>
     <div class="calendar" id="calendar"></div>
 
     <!-- Modal para adicionar informação -->
@@ -439,14 +464,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendário Dinâmico</title>
     <style>
         /* Estilos conforme o anterior */
     </style>
 </head>
 <body>
 
-    <h2>Calendário Dinâmico</h2>
     <div class="calendar" id="calendar"></div>
 
     <div class="modal" id="modal">
